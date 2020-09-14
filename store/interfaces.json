@@ -1,11 +1,11 @@
 {
-  "countdown": {
-    "component": "Countdown"
+  "chatbot": {
+    "component": "Chatbot"
   },
-  "countdown.header": {
+  "chatbot.header": {
     "component": "Header"
   },
-  "countdown.input": {
+  "chatbot.input": {
     "component": "Input"
   }
 }
