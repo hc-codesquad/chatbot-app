@@ -5,5 +5,7 @@
   "countdown.header": {
     "component": "Header"
   },
+  "countdown.input": {
+    "component": "Input"
   }
 }
