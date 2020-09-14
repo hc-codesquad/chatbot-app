@@ -1,4 +1,17 @@
 {
   "editor.chatbot.title": "Chatbot",
-  "editor.chatbot.description": "Chatbot component"
+  "editor.chatbot.description": "Chatbot component",
+  "editor.chatbot.header.title": "Chatbot",
+  "editor.chatbot.header.description": "Chatbot component",
+
+  "editor.chatbot-header.title": "Chatbot Header",
+  "editor.chatbot-header.description": "Header of chatbot component",
+  "editor.chatbot.header.title-title": "Header Title",
+  "editor.chatbot.header.title-description": "Title of chatbot in header",
+  "editor.chatbot.header.description-title": "Header Description",
+  "editor.chatbot.header.description-description": "Description of chatbot in header",
+  "editor.chatbot.header.avatarurl-title": "Header Avatar URL",
+  "editor.chatbot.header.avatarurl-description": "URL of chatbot avatar",
+  "editor.chatbot.header.avataralt-title": "Header Avatar Alt",
+  "editor.chatbot.header.avataralt-description": "Alternative text of chatbot avatar"
 }

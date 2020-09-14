@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 interface HeaderProps {
   title: string;
@@ -8,6 +9,8 @@ interface HeaderProps {
 }
 
 const Header: StorefrontFunctionComponent<HeaderProps> = ({ title, description, avatarUrl, avatarAlt }) => {
+  const titleText = title || <FormattedMessage id="editor.chatbot.header.title" />
+  const descriptionText = description || <FormattedMessage id="editor.chatbot.header.description" />
 
 
   return (
@@ -21,8 +24,8 @@ const Header: StorefrontFunctionComponent<HeaderProps> = ({ title, description, 
           />
         </div>
         <div>
-          <div className="f4 f-headline">{title}</div>
-          <div className="f7 f-subheadline">{description}</div>
+          <div className="f4 f-headline">{titleText}</div>
+          <div className="f7 f-subheadline">{descriptionText}</div>
         </div>
       </div>
       <div className="">
@@ -32,6 +35,35 @@ const Header: StorefrontFunctionComponent<HeaderProps> = ({ title, description, 
 };
 
 Header.schema = {
+  title: "editor.chatbot-header.title",
+  description: "editor.chatbot-header.description",
+  type: "object",
+  properties: {
+    title: {
+      title: "editor.chatbot.header.title-title",
+      description: "editor.chatbot.header.title-description",
+      type: "string",
+      default: null
+    },
+    description: {
+      title: "editor.chatbot.header.description-title",
+      description: "editor.chatbot.header.description-description",
+      type: "string",
+      default: null
+    },
+    avatarUrl: {
+      title: "editor.chatbot.header.avatarurl-title",
+      description: "editor.chatbot.header.avatarurl-description",
+      type: "string",
+      default: null
+    },
+    avatarAlt: {
+      title: "editor.chatbot.header.avataralt-title",
+      description: "editor.chatbot.header.avataralt-description",
+      type: "string",
+      default: null
+    },
+  }
 }
 
 export default Header
