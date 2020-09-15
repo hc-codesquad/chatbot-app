@@ -83,6 +83,9 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
     createChat()
   }, [available])
 
+  const headerTitleText = headerTitle || <FormattedMessage id="editor.chatbot.title" />
+  const headerDescriptionText = headerDescription || <FormattedMessage id="editor.chatbot.description" />
+
   return (
     <div className={`${handles.chatbotContainer} ${closed ? 'dn' : 'flex'} vh-50 vw-25 bg-near-white br4 flex flex-column relative`}>
       <div className={`${handles.chatbotHeader} w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between`}>
@@ -95,8 +98,8 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
             />
           </div>
           <div>
-            <div className="f4 f-headline">{headerTitle}</div>
-            <div className="f7 f-subheadline">{headerDescription}</div>
+            <div className="f4 f-headline">{headerTitleText}</div>
+            <div className="f7 f-subheadline">{headerDescriptionText}</div>
           </div>
         </div>
         <div className="flex items-center ph3">
