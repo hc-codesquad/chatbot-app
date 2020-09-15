@@ -83,7 +83,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   }, [available])
 
   return (
-    <div className={`${handles.chatbotContainer} vh-50 vw-25 bg-near-white br4 flex flex-column relative`}>
+    <div className={`${handles.chatbotContainer} ${closed ? 'dn' : 'flex'} vh-50 vw-25 bg-near-white br4 flex flex-column relative`}>
       <div className={`${handles.chatbotHeader} w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between`}>
         <div className="flex items-center">
           <div className="w2 w2 mr2">
@@ -103,7 +103,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
         </div>
       </div>
 
-      <div className={`${handles.chatbotMessages} h-100 ph2 mb5 pb2 overflow-y-scroll`}>
+      <div className={`${handles.chatbotMessages} h-75 ph2 mb5 pb2 overflow-y-scroll`}>
         <div className="bg-lightest-blue pa3 br4 flex flex-column">
           <div className="mb3">
             Gostaria de receber sugestões de produtos similares?
@@ -141,8 +141,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
         ))}
       </div>
 
-      <div className={`${handles.chatbotFooter} absolute bottom-0 w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between`}>
-        <div className="h2 w-80">
+      <div className={`${handles.chatbotFooter} absolute bottom-0 w-100 br4 pa3 bg-blue white flex items-center justify-between`}>
           <input
             className="h-100 w-100 br2 pa2 b--none outline-0 bg-transparent washed-blue"
             placeholder={senderPlaceholder}
