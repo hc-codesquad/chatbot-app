@@ -13,5 +13,7 @@
   "editor.chatbot.header.avatarurl-title": "Header Avatar URL",
   "editor.chatbot.header.avatarurl-description": "URL of chatbot avatar",
   "editor.chatbot.header.avataralt-title": "Header Avatar Alt",
-  "editor.chatbot.header.avataralt-description": "Alternative text of chatbot avatar"
+  "editor.chatbot.header.avataralt-description": "Alternative text of chatbot avatar",
+  "editor.chatbot.input.placeholder-title": "Chatbot Input Placeholder",
+  "editor.chatbot.input.placeholder-description": "Placeholder of Input Sender"
 }
