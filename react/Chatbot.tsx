@@ -61,7 +61,7 @@ interface Message {
 
   const { selectedItem } = useProduct()
   const [available, setAvailable] = useState(true)
-  const [messages, setMessages] = useState(dataMock)
+  const [messages, setMessages] = useState<Message[]>([])
   const [message, setMessage] = useState('')
   const [suggestions, setSuggestions] = useState<Suggestions[]>([])
   const [accepted, setAccepted] = useState(false)
