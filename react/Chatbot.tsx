@@ -3,6 +3,7 @@ import useProduct from 'vtex.product-context/useProduct'
 import getHour from './utils/getHour';
 import axios from 'axios'
 import { useCssHandles } from 'vtex.css-handles'
+import { FiX, FiSend } from 'react-icons/fi'
 
 const dataMock = [
   {
@@ -19,7 +20,7 @@ const dataMock = [
   },
   {
     id: 3,
-    content: "Uma mensagem qualquer enviada pelo cliente.",
+    content: "Uma mensagem qualquer enviada pelo bot.",
     timestamp: new Date().getTime(),
     color: "bg-washed-green"
   },
@@ -31,7 +32,7 @@ const dataMock = [
   },
   {
     id: 5,
-    content: "Uma mensagem qualquer enviada pelo cliente.",
+    content: "Uma mensagem qualquer enviada pelo bot.",
     timestamp: new Date().getTime(),
     color: "bg-washed-green"
   },
@@ -67,8 +68,8 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   }
 
   async function createChat() {
-    if(!available) {
-      const { data: response } = await axios.post('https://xfzjvg2ow9.execute-api.us-east-1.amazonaws.com/dev/chatbot', {        
+    if (!available) {
+      const { data: response } = await axios.post('https://xfzjvg2ow9.execute-api.us-east-1.amazonaws.com/dev/chatbot', {
         text: `produto \${${selectedItem.itemId}}`
       })
 
@@ -97,7 +98,8 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
             <div className="f7 f-subheadline">{headerDescription}</div>
           </div>
         </div>
-        <div className="">
+        <div className="flex items-center ph3">
+          <FiX size={24} className="white" />
         </div>
       </div>
 
@@ -105,7 +107,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
         <div className="bg-lightest-blue pa3 br4 flex flex-column">
           <div className="mb3">
             Gostaria de receber sugestões de produtos similares?
-          </div>
+                </div>
           <div className="flex justify-between mb2 bg-action-secondary">
             <button
               className="grow pointer w-50 br3 br--left pa2 br bl-0 bt-0 bb-0 b--white-20 white bg-action-primary"
@@ -113,14 +115,14 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
               value="sim"
             >
               Sim
-            </button>
+                  </button>
             <button
               className="grow pointer w-50 br3 br--right pa2 bl br-0 bt-0 bb-0 b--white-20 white bg-action-primary"
               type="button"
               value="não"
             >
               Não
-            </button>
+                  </button>
           </div>
           <div className="self-end">
             <span className="f7 f-subheadline">22:30</span>
@@ -140,15 +142,16 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
       </div>
 
       <div className={`${handles.chatbotFooter} absolute bottom-0 w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between`}>
-      <div className="h2 w-80">
-        <input
-          className="h-100 w-100 br2 pa2 b--none outline-0 bg-transparent washed-blue"
-          placeholder={senderPlaceholder}
-        />
+        <div className="h2 w-80">
+          <input
+            className="h-100 w-100 br2 pa2 b--none outline-0 bg-transparent washed-blue"
+            placeholder={senderPlaceholder}
+          />
+        </div>
+        <div className="w-20 flex justify-center items-center">
+          <FiSend size={24} className="white" />
+        </div>
       </div>
-      <div className="w-20 flex justify-center items-center">
-      </div>
-    </div>
     </div>
   )
 }
