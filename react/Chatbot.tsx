@@ -59,6 +59,13 @@ interface Message {
   timestamp: number;
 }
 
+interface Suggestions {
+  id: number;
+  nameComplete: string;
+  imageUrl: string;
+  url: string;
+}
+
   const { selectedItem } = useProduct()
   const [available, setAvailable] = useState(true)
   const [messages, setMessages] = useState<Message[]>([])
