@@ -4,46 +4,7 @@ import getHour from './utils/getHour';
 import axios from 'axios'
 import { useCssHandles } from 'vtex.css-handles'
 import { FiX, FiSend } from 'react-icons/fi'
-
-const dataMock = [
-  {
-    id: 1,
-    content: "Uma mensagem qualquer enviada pelo bot.",
-    timestamp: new Date().getTime(),
-    color: "bg-lightest-blue"
-  },
-  {
-    id: 2,
-    content: "Uma mensagem qualquer enviada pelo cliente.",
-    timestamp: new Date().getTime(),
-    color: "bg-washed-green"
-  },
-  {
-    id: 3,
-    content: "Uma mensagem qualquer enviada pelo bot.",
-    timestamp: new Date().getTime(),
-    color: "bg-washed-green"
-  },
-  {
-    id: 4,
-    content: "Uma mensagem qualquer enviada pelo cliente.",
-    timestamp: new Date().getTime(),
-    color: "bg-lightest-blue"
-  },
-  {
-    id: 5,
-    content: "Uma mensagem qualquer enviada pelo bot.",
-    timestamp: new Date().getTime(),
-    color: "bg-washed-green"
-  },
-  {
-    id: 6,
-    content:
-      "Uma mensagem qualquer enviada pelo cliente. Uma mensagem qualquer enviada pelo cliente. Uma mensagem qualquer enviada pelo cliente. Uma mensagem qualquer enviada pelo cliente.",
-    timestamp: new Date().getTime(),
-    color: "bg-lightest-blue"
-  }
-];
+import { FormattedMessage } from 'react-intl'
 
 interface ChatbotProps {
   headerTitle: string;
@@ -57,6 +18,7 @@ interface Message {
   id: number;
   content: string;
   timestamp: number;
+  color: string;
 }
 
 interface Suggestions {
@@ -105,7 +67,8 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
     const newMessage = {
       id: (messages.length - 1),
       content: message,
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      color: "bg-blue"
     }
 
     setMessages(current => [...current, newMessage])
@@ -114,8 +77,9 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   function handleAcceptSuggestions() {
     const newMessage = {
       id: (messages.length - 1),
-      content: "Sim",
-      timestamp: Date.now()
+      content: "Sim.",
+      timestamp: Date.now(),
+      color: "bg-blue"
     }
 
     setAccepted(true)
@@ -125,8 +89,9 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   function handleDeclineSuggestions() {
     const newMessage = {
       id: (messages.length - 1),
-      content: "Não",
-      timestamp: Date.now()
+      content: "Certo, mas se precisa de qualquer ajuda estarei aqui.",
+      timestamp: Date.now(),
+      color: "bg-black-20"
     }
 
     setAccepted(false)
@@ -134,7 +99,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   }
 
   return (
-    <div className={`${handles.chatbotContainer} ${closed ? 'dn' : 'flex'} vh-50 vw-25 bg-near-white br4 flex flex-column relative`}>
+    <div className={`${handles.chatbotContainer} vh-50 vw-25 bg-near-white br4 flex flex-column relative`}>
       <div className={`${handles.chatbotHeader} w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between`}>
         <div className="flex items-center">
           <div className="w2 w2 mr2">
@@ -149,27 +114,26 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
             <div className="f7 f-subheadline">{headerDescriptionText}</div>
           </div>
         </div>
-        <button className="flex items-center ph3 pointer bg-transparent b--none outline-0" onClick={() => setClosed(true)}>
+        <button className="flex items-center ph3 pointer bg-transparent b--none outline-0">
           <FiX size={24} className="white" />
         </button>
       </div>
 
       <div className={`${handles.chatbotMessages} h-75 ph2 mb5 pb2 overflow-y-scroll`}>
-        <div className={`${handles.chatbotMessage} br4 pa3 flex flex-column mt2`}>
+        <div className={`${handles.chatbotMessage} bg-black-20 br4 pa3 flex flex-column mv2`}>
           <div className="">
             <p className="">Olá, percebi que está procurando um produto indisponível e eu posso te ajudar.</p>
           </div>
           <div className="self-end">
             <span className="f7 f-subheadline">{getHour({ timestamp: Date.now(), timezone: 'America/Sao_Paulo', locale: 'pt-BR' })}</span>
+          </div>
         </div>
-      </div>
 
-      <div className={`${handles.chatbotMessages} h-75 ph2 mb5 pb2 overflow-y-scroll`}>
-        <div className="bg-lightest-blue pa3 br4 flex flex-column">
+        <div className="bg-black-20 pa3 br4 flex flex-column">
           <div className="mb3">
             Gostaria de receber sugestões de produtos similares?
                 </div>
-          <div className="flex justify-between mb2 bg-action-secondary">
+          <div className="flex justify-between mb2">
             <button
               className="grow pointer w-50 br3 br--left pa2 br bl-0 bt-0 bb-0 b--white-20 white bg-action-primary outline-0"
               type="button"
@@ -193,7 +157,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
         </div>
 
         {messages.map((message) => (
-          <div key={message.id} className={`${handles.chatbotMessage} br4 pa3 flex flex-column mt2`}>
+          <div key={message.id} className={`${handles.chatbotMessage} ${message.color} white br4 pa3 flex flex-column mt2`}>
             <div className="">
               <p className="">{message.content}</p>
             </div>
@@ -206,7 +170,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
       
         <div className="w-100 flex overflow-x-scroll">
           {accepted && suggestions.map(suggestions => (
-            <div className="bg-action-secondary br4 mv2 w5 mr2">
+            <div className="bg-black-20 br4 mv2 w5 mr2 flex flex-column justify-between">
               <div className="">
                 <img
                   className="w-50 br4"
@@ -214,7 +178,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
                   alt={suggestions.nameComplete}
                 />
               </div>
-              <div className="pv2 ph3">
+              <div className="pv2 ph3 br4 bg-blue">
                 <div className="flex justify-center">
                   <h2 className="f5 f-headline truncate mr1 white">
                     {suggestions.nameComplete}
@@ -222,7 +186,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
                   {/* <span className="f6 f-subheadline white">R$1.299,99</span> */}
                 </div>
                 <div className="pv2 ph3 br3 mt2 pointer flex justify-center bg-white">
-                  <a className="b pointer action-primary" href={suggestions.url}>
+                  <a className="b pointer blue no-underline" href={suggestions.url}>
                     Ver detalhes
                   </a>
                 </div>
