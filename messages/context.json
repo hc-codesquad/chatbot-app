@@ -1,8 +1,6 @@
 {
   "editor.chatbot.title": "Chatbot",
   "editor.chatbot.description": "Chatbot component",
-  "editor.chatbot.header.title": "Chatbot",
-  "editor.chatbot.header.description": "Chatbot component",
 
   "editor.chatbot-header.title": "Chatbot Header",
   "editor.chatbot-header.description": "Header of chatbot component",
