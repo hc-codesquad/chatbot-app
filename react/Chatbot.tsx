@@ -58,6 +58,8 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   const [available, setAvailable] = useState(true)
   const [messages, setMessages] = useState(dataMock)
   const [message, setMessage] = useState('')
+  const [suggestions, setSuggestions] = useState<Suggestions[]>([])
+  const [accepted, setAccepted] = useState(false)
 
   const CSS_HANDLES = ['chatbotContainer', 'chatbotHeader', 'chatbotMessages', 'chatbotMessage', 'chatbotFooter']
   const handles = useCssHandles(CSS_HANDLES)
@@ -70,11 +72,11 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
 
   async function createChat() {
     if (!available) {
-      const { data: response } = await axios.post('https://xfzjvg2ow9.execute-api.us-east-1.amazonaws.com/dev/chatbot', {
+      const { data } = await axios.post('https://xfzjvg2ow9.execute-api.us-east-1.amazonaws.com/dev/chatbot', {
         text: `produto \${${selectedItem.itemId}}`
       })
 
-      console.log(response)
+      setSuggestions(current => [...current, ...data.suggestions.suggestions])
     }
   }
 
