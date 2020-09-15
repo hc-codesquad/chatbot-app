@@ -56,7 +56,7 @@ interface ChatbotProps {
 const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, headerDescription, headerAvatarUrl, headerAvatarAlt, senderPlaceholder }) => {
   const { selectedItem } = useProduct()
   const [available, setAvailable] = useState(true)
-  const [data] = useState(dataMock)
+  const [messages, setMessages] = useState(dataMock)
 
   const CSS_HANDLES = ['chatbotContainer', 'chatbotHeader', 'chatbotMessages', 'chatbotMessage', 'chatbotFooter']
   const handles = useCssHandles(CSS_HANDLES)
@@ -129,7 +129,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
           </div>
         </div>
 
-        {data.map((message) => (
+        {messages.map((message) => (
           <div key={message.id} className={`${handles.chatbotMessage} br4 pa3 flex flex-column mt2`}>
             <div className="">
               <p className="">{message.content}</p>
