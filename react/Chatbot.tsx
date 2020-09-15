@@ -134,8 +134,10 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
             <div className="f7 f-subheadline">{headerDescriptionText}</div>
           </div>
         </div>
-        <div className="flex items-center ph3">
+        <button className="flex items-center ph3 pointer bg-transparent b--none outline-0" onClick={() => setClosed(true)}>
           <FiX size={24} className="white" />
+        </button>
+      </div>
 
       <div className={`${handles.chatbotMessages} h-75 ph2 mb5 pb2 overflow-y-scroll`}>
         <div className={`${handles.chatbotMessage} br4 pa3 flex flex-column mt2`}>
