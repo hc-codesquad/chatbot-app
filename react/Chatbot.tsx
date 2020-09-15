@@ -136,6 +136,14 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
         </div>
         <div className="flex items-center ph3">
           <FiX size={24} className="white" />
+
+      <div className={`${handles.chatbotMessages} h-75 ph2 mb5 pb2 overflow-y-scroll`}>
+        <div className={`${handles.chatbotMessage} br4 pa3 flex flex-column mt2`}>
+          <div className="">
+            <p className="">Olá, percebi que está procurando um produto indisponível e eu posso te ajudar.</p>
+          </div>
+          <div className="self-end">
+            <span className="f7 f-subheadline">{getHour({ timestamp: Date.now(), timezone: 'America/Sao_Paulo', locale: 'pt-BR' })}</span>
         </div>
       </div>
 
