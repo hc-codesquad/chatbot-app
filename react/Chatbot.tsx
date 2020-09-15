@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useProduct from 'vtex.product-context/useProduct'
 import getHour from './utils/getHour';
 import axios from 'axios'
+import { useCssHandles } from 'vtex.css-handles'
 
 const dataMock = [
   {
@@ -56,6 +57,9 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   const [available, setAvailable] = useState(true)
   const [data] = useState(dataMock)
 
+  const CSS_HANDLES = ['chatbotContainer', 'chatbotHeader', 'chatbotMessages', 'chatbotMessage', 'chatbotFooter']
+  const handles = useCssHandles(CSS_HANDLES)
+
   function isAvailable() {
     const { AvailableQuantity } = selectedItem.sellers[0].commertialOffer
 
@@ -78,8 +82,8 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   }, [available])
 
   return (
-    <div className={`vh-50 vw-25 bg-near-white br4 flex flex-column relative`}>
-      <div className={`w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between`}>
+    <div className={`${handles.chatbotContainer} vh-50 vw-25 bg-near-white br4 flex flex-column relative`}>
+      <div className={`${handles.chatbotHeader} w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between`}>
         <div className="flex items-center">
           <div className="w2 w2 mr2">
             <img
@@ -97,7 +101,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
         </div>
       </div>
 
-      <div className="h-100 ph2 mb5 pb2 overflow-y-scroll">
+      <div className={`${handles.chatbotMessages} h-100 ph2 mb5 pb2 overflow-y-scroll`}>
         <div className="bg-lightest-blue pa3 br4 flex flex-column">
           <div className="mb3">
             Gostaria de receber sugestões de produtos similares?
@@ -124,7 +128,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
         </div>
 
         {data.map((message) => (
-          <div key={message.id} className={`${message.color} br4 pa3 flex flex-column mt2`}>
+          <div key={message.id} className={`${handles.chatbotMessage} br4 pa3 flex flex-column mt2`}>
             <div className="">
               <p className="">{message.content}</p>
             </div>
@@ -135,7 +139,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
         ))}
       </div>
 
-      <div className="absolute bottom-0 w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between">
+      <div className={`${handles.chatbotFooter} absolute bottom-0 w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between`}>
       <div className="h2 w-80">
         <input
           className="h-100 w-100 br2 pa2 b--none outline-0 bg-transparent washed-blue"
