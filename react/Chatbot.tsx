@@ -86,6 +86,38 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   const headerTitleText = headerTitle || <FormattedMessage id="editor.chatbot.title" />
   const headerDescriptionText = headerDescription || <FormattedMessage id="editor.chatbot.description" />
 
+  function handleSendMessage() {
+    const newMessage = {
+      id: (messages.length - 1),
+      content: message,
+      timestamp: Date.now()
+    }
+
+    setMessages(current => [...current, newMessage])
+  }
+
+  function handleAcceptSuggestions() {
+    const newMessage = {
+      id: (messages.length - 1),
+      content: "Sim",
+      timestamp: Date.now()
+    }
+
+    setAccepted(true)
+    setMessages(current => [...current, newMessage])
+  }
+
+  function handleDeclineSuggestions() {
+    const newMessage = {
+      id: (messages.length - 1),
+      content: "Não",
+      timestamp: Date.now()
+    }
+
+    setAccepted(false)
+    setMessages(current => [...current, newMessage])
+  }
+
   return (
     <div className={`${handles.chatbotContainer} ${closed ? 'dn' : 'flex'} vh-50 vw-25 bg-near-white br4 flex flex-column relative`}>
       <div className={`${handles.chatbotHeader} w-100 h-20 br4 pa3 bg-blue washed-blue flex items-center justify-between`}>
@@ -116,14 +148,16 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
             <button
               className="grow pointer w-50 br3 br--left pa2 br bl-0 bt-0 bb-0 b--white-20 white bg-action-primary outline-0"
               type="button"
-              value="sim"
+              value="Sim"
+              onClick={handleAcceptSuggestions}
             >
               Sim
                   </button>
             <button
               className="grow pointer w-50 br3 br--right pa2 bl br-0 bt-0 bb-0 b--white-20 white bg-action-primary outline-0"
               type="button"
-              value="não"
+              value="Não"
+              onClick={handleDeclineSuggestions}
             >
               Não
                   </button>
