@@ -53,7 +53,12 @@ interface ChatbotProps {
   senderPlaceholder: string;
 }
 
-const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, headerDescription, headerAvatarUrl, headerAvatarAlt, senderPlaceholder }) => {
+interface Message {
+  id: number;
+  content: string;
+  timestamp: number;
+}
+
   const { selectedItem } = useProduct()
   const [available, setAvailable] = useState(true)
   const [messages, setMessages] = useState(dataMock)
