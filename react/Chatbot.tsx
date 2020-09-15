@@ -142,14 +142,17 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
       </div>
 
       <div className={`${handles.chatbotFooter} absolute bottom-0 w-100 br4 pa3 bg-blue white flex items-center justify-between`}>
+        <div className="w-80">
           <input
-            className="h-100 w-100 br2 pa2 b--none outline-0 bg-transparent washed-blue"
+            className="h-100 w-100 br2 pa3 b--none outline-0 bg-white action-primary"
             placeholder={senderPlaceholder}
+            value={message}
+            onChange={e => setMessage(e.target.value)}
           />
         </div>
-        <div className="w-20 flex justify-center items-center">
+        <button className="w-20 flex justify-center items-center pointer b--none bg-transparent outline-0" onClick={handleSendMessage}>
           <FiSend size={24} className="white" />
-        </div>
+        </button>
       </div>
     </div>
   )
