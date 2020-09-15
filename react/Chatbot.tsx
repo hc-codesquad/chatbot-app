@@ -66,6 +66,7 @@ interface Suggestions {
   url: string;
 }
 
+const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, headerDescription, headerAvatarUrl, headerAvatarAlt, senderPlaceholder = 'Digite aqui...' }) => {
   const { selectedItem } = useProduct()
   const [available, setAvailable] = useState(true)
   const [messages, setMessages] = useState<Message[]>([])
