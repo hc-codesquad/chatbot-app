@@ -2,10 +2,10 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
 interface HeaderProps {
-  title: string;
-  description: string;
-  avatarUrl: string;
-  avatarAlt: string;
+  title?: string;
+  description?: string;
+  avatarUrl?: string;
+  avatarAlt?: string;
 }
 
 const Header: StorefrontFunctionComponent<HeaderProps> = ({ title, description, avatarUrl, avatarAlt }) => {

@@ -1,14 +1,11 @@
-import React, { useState } from 'react'
-
-
-
+import React from 'react'
 
 interface MessagesProps {
-  timezone: string;
-  locale: string;
+  timezone?: string;
+  locale?: string;
 }
 
-const Messages: StorefrontFunctionComponent<MessagesProps> = ({ timezone, locale }) => {
+const Messages: StorefrontFunctionComponent<MessagesProps> = () => {
   return (
     <div className="ph2 overflow-hidden overflow-y-scroll mb5 pb2">
     </div>
