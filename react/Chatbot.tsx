@@ -177,6 +177,34 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
             </div>
           </div>
         ))}
+
+      
+        <div className="w-100 flex overflow-x-scroll">
+          {accepted && suggestions.map(suggestions => (
+            <div className="bg-action-secondary br4 mv2 w5 mr2">
+              <div className="">
+                <img
+                  className="w-50 br4"
+                  src={suggestions.imageUrl}
+                  alt={suggestions.nameComplete}
+                />
+              </div>
+              <div className="pv2 ph3">
+                <div className="flex justify-center">
+                  <h2 className="f5 f-headline truncate mr1 white">
+                    {suggestions.nameComplete}
+                  </h2>
+                  {/* <span className="f6 f-subheadline white">R$1.299,99</span> */}
+                </div>
+                <div className="pv2 ph3 br3 mt2 pointer flex justify-center bg-white">
+                  <a className="b pointer action-primary" href={suggestions.url}>
+                    Ver detalhes
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className={`${handles.chatbotFooter} absolute bottom-0 w-100 br4 pa3 bg-blue white flex items-center justify-between`}>
