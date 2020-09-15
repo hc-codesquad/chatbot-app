@@ -57,6 +57,7 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
   const { selectedItem } = useProduct()
   const [available, setAvailable] = useState(true)
   const [messages, setMessages] = useState(dataMock)
+  const [message, setMessage] = useState('')
 
   const CSS_HANDLES = ['chatbotContainer', 'chatbotHeader', 'chatbotMessages', 'chatbotMessage', 'chatbotFooter']
   const handles = useCssHandles(CSS_HANDLES)
