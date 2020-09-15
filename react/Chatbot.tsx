@@ -114,14 +114,14 @@ const Chatbot: StorefrontFunctionComponent<ChatbotProps> = ({ headerTitle, heade
                 </div>
           <div className="flex justify-between mb2 bg-action-secondary">
             <button
-              className="grow pointer w-50 br3 br--left pa2 br bl-0 bt-0 bb-0 b--white-20 white bg-action-primary"
+              className="grow pointer w-50 br3 br--left pa2 br bl-0 bt-0 bb-0 b--white-20 white bg-action-primary outline-0"
               type="button"
               value="sim"
             >
               Sim
                   </button>
             <button
-              className="grow pointer w-50 br3 br--right pa2 bl br-0 bt-0 bb-0 b--white-20 white bg-action-primary"
+              className="grow pointer w-50 br3 br--right pa2 bl br-0 bt-0 bb-0 b--white-20 white bg-action-primary outline-0"
               type="button"
               value="não"
             >
